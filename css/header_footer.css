@@ -1,0 +1,98 @@
+#header {
+    background-color: rgb(38,153,251);
+    color: white;
+    height: 45px;
+}
+
+div {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+  }
+
+body {
+    background-color: rgba(255, 255, 255, 0);
+    font-family: PT Sans, Verdana, sans-serif;
+    color: rgb(77, 77, 77);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+body:before {
+    content:"";
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    opacity: 0.25;
+    background-image: url("../resources/background.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.title {
+    margin-top: 3%;
+    margin-bottom: 0%;
+    text-align: center;
+    font-size: 350%;
+    font-weight: bold;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 150%;
+}
+
+#features {
+    position: relative;
+    left: 5%;
+    /* padding-top: 0.3%;
+    padding-bottom: 0.3%; */
+    float: left;
+    width: 40%;
+}
+
+img {
+    /* position: relative; */
+    right: 5%;
+    /* top: 0%; */
+    width: 90%;
+}
+
+#footer {
+    background-color: rgb(38,153,251);
+    color: white;
+    line-height: 170%;
+}
+
+.column {
+    float: left;
+}
+  
+.left {
+    width: 40%;
+}
+  
+.right {
+    width: 60%;
+}
+
+#footer-left {
+    padding-left: 4%;
+    padding-top: 0.3%;
+    padding-bottom: 0.3%;
+    float: left;
+    width: 150px;
+}
+
+#footer-right {
+    padding-left: 23%;
+    width: 77%;
+    padding-top: 0.3%;
+    padding-bottom: 0.3%;
+}
