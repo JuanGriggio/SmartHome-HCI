@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link href="../css/header_footer.css" rel="stylesheet">
+    <title>UltraHome</title>
+  </head>
+  <body>
+    
+    <div id="app">
+        <v-app>
+          <v-content>
+            <v-toolbar short class="white--text" color="light-blue darken-1">
+                <v-toolbar-title :align="center">UltraHome</v-toolbar-title>
+                <v-btn class="white--text" text>HOME</v-btn>
+                <v-btn class="white--text" text>ABOUT US</v-btn>
+                <v-btn class="ma-2" outlined color="white">LOG IN</v-btn>
+                <v-btn class="ma-2" outlined color="white">SIGN UP</v-btn>
+            </v-toolbar>
+            <v-spacer></v-spacer>
+            <div>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos sapiente facere alias, odit aspernatur quos, consequatur, eveniet iusto perferendis nam minus nemo voluptatibus tenetur ratione eum optio rem eligendi aut?
+                </p>
+            </div>
+            <v-spacer></v-spacer>
+            <div>
+                <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos sapiente facere alias, odit aspernatur quos, consequatur, eveniet iusto perferendis nam minus nemo voluptatibus tenetur ratione eum optio rem eligendi aut?
+                </p>
+            </div>
+            <v-spacer></v-spacer>
+            <v-footer class="white--text" color="light-blue darken-1" :align="end">
+                <div id="footer-left">
+                    <p>CONTACT US</p>
+                    <p>
+                        info@NOMBREAPP.com
+                        <br>
+                        +54 9 11-5043-5985
+                    </p>    
+                </div>
+                <div id="footer-right">
+                    <p>CAREERS</p>
+                    <p>
+                        Come join us!
+                        <br>
+                        <a href="careers.html">Careers site</a>
+                    </p>
+                </div>
+            </v-footer>
+          </v-content>
+        </v-app>
+      </div>
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+      })
+    </script>
+  </body>
+  </html>
