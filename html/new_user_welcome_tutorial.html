@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <link href="../css/index.css" rel="stylesheet">
+  <title>new_user_welcome_tutorial</title>
+</head>
+<body>
+  <div id="app">
+    <v-app>
+      <v-content>
+
+        <v-toolbar app short color="light-blue darken-1 white--text">
+          <v-toolbar-title>UltraHome</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn class="white--text" text>SETTINGS</v-btn>
+          <v-btn class="ma-2, blue--text">LOG OUT</v-btn>
+        </v-toolbar>
+
+        <v-container>
+          <v-row>
+            <v-col align="center">
+              <p class="display-3">Welcome to UltraHome, Juan!</p>
+            </v-col>
+          </v-row>
+        </v-container>
+
+
+        <!-- NOTA: considerar usar la propiedad de loading de las v-card -->
+
+        <v-container>
+          <v-row>
+
+            <v-col cols="4" align="center">
+              <p class="title">Step 1: create a new home</p>
+              <!-- este <p> lo añadi solamente para que el boton aparezca separado del v-card -->
+              <p>
+                <v-btn color="light-blue darken-1 white--text">Add home</v-btn>
+              </p>
+              <v-card color="light-blue darken-1">
+                <v-icon large>mdi-check</v-icon>
+                <v-card>
+                  <v-card-title align="center">
+                    <p>Casa de Juan added!</p>
+                  </v-card-title>
+                </v-card>
+              </v-card>
+            </v-col>
+
+            <v-col cols="4" align="center">
+              <p class="title">Step 2: Create a new room</p>
+              <!-- este <p> lo añadi solamente para que el boton aparezca separado del v-card -->
+              <p>
+                <v-btn color="light-blue darken-1 white--text">Add room</v-btn>
+              </p>
+              <v-card color="light-blue darken-1">
+                <v-icon large>mdi-check</v-icon>
+              </v-card>
+              <v-card>
+                <v-card-title align="center">
+                  <p>Dormitorio added!</p>
+                </v-card-title>
+              </v-card>
+            </v-col>
+
+            <v-col cols="4" align="center">
+              <p class="title">Step 3: add your first device</p>
+              <!-- este <p> lo añadi solamente para que el boton aparezca separado del v-card -->
+              <p>
+                <v-btn color="light-blue darken-1 white--text">Add device</v-btn>
+              </p>
+              <v-card color="light-blue darken-1">
+                <v-icon large>mdi-check</v-icon>
+              </v-card>
+              <v-card>
+                <v-card-title align="center">
+                  <p>Fridge added!</p>
+                </v-card-title>
+              </v-card>
+            </v-col>
+
+          </v-row>
+        </v-container>
+
+        <v-footer color="light-blue darken-1 white--text">
+          <v-container>
+            <v-row>
+              <v-col cols="2">
+                <p>CONTACT US</p>
+                <p>
+                  info@NOMBREAPP.com
+                  <br>
+                  +54 9 11-5043-5985
+                </p>
+              </v-col>
+
+              <v-col cols="2">
+                <p>CAREERS</p>
+                <p>
+                  Come join us!
+                  <br>
+                  <a href="careers.html">Careers site</a>
+                </p>
+              </v-col>
+
+              <v-col cols="8"></v-col>
+            </v-row>
+          </v-container>
+        </v-footer>
+
+      </v-content>
+    </v-app>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+      new Vue({
+          el: '#app',
+          vuetify: new Vuetify(),
+      })
+  </script>
+
+</body>
+</html>
