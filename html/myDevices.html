@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link href="../css/general.css" rel="stylesheet">
+    <link href="../css/myDevices.css" rel="stylesheet">
+    <title>UltraHome - My Devices</title>
+  </head>
+  <body>
+    
+    <div id="app">
+        <v-app>
+          <v-content>
+
+
+            <v-toolbar app short color="light-blue darken-1 white--text">
+                <v-toolbar-title>UltraHome</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn class="white--text" text>SETTINGS</v-btn>
+                <v-btn class="ma-2" outlined color="white">LOG OUT</v-btn>
+          </v-toolbar>
+
+
+           <v-container fluid>
+               <v-row>
+                   <v-col cols="4" class="blue lighten-5">
+                        <v-card>
+                            <v-row align="center">
+                                <v-col cols="1"></v-col>
+
+                                <v-col align="center">
+                                    <p id="npnm" class="headline">Quick actions / Routines</p>
+                                </v-col>
+
+                                <v-col cols="2">
+                                    <v-btn small>Edit</v-btn>
+                                </v-col>
+
+                                <v-col cols="1"></v-col>
+                            </v-row>
+                        </v-card>
+
+
+
+                        <div id="quick_actions">
+                            <!-- EN PROCESO -->
+                            <!-- <v-container>
+                                <v-row>
+                                    <v-col>
+                                        <v-card>
+                                            <v-container>
+                                                <v-icon>mdi-home</v-icon>
+                                            </v-container>
+                                            <p>Coming home</p>
+                                        </v-card>
+                                    </v-col>
+
+                                    <v-col>
+    
+                                    </v-col>
+                                </v-row>
+                            </v-container> -->
+                            
+
+
+                            <!-- ESTO ES PARA VER EL SCROLL -->
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                        </div>
+                   </v-col>
+
+                   <v-col cols="8">
+                        <div id="my_devices">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus dolorum, veritatis eius nulla at vitae veniam quis a voluptatibus id. Dolorem qui aut dolores autem dolor consectetur tenetur, cupiditate amet?</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis facilis, aspernatur error sequi quisquam praesentium optio aut nihil enim eos! Ad, vitae harum! Nisi velit sunt, id doloribus commodi atque?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non ratione deleniti, adipisci placeat debitis quo facilis nesciunt illum error unde corrupti eveniet veritatis animi et quasi vero quibusdam beatae perferendis.</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore voluptatum minus tenetur ab, necessitatibus in, similique architecto perferendis repudiandae maxime consectetur ex reprehenderit magni vitae quidem quaerat quod dolores et.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus dolorum, veritatis eius nulla at vitae veniam quis a voluptatibus id. Dolorem qui aut dolores autem dolor consectetur tenetur, cupiditate amet?</p>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis facilis, aspernatur error sequi quisquam praesentium optio aut nihil enim eos! Ad, vitae harum! Nisi velit sunt, id doloribus commodi atque?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non ratione deleniti, adipisci placeat debitis quo facilis nesciunt illum error unde corrupti eveniet veritatis animi et quasi vero quibusdam beatae perferendis.</p>
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore voluptatum minus tenetur ab, necessitatibus in, similique architecto perferendis repudiandae maxime consectetur ex reprehenderit magni vitae quidem quaerat quod dolores et.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus labore qui voluptates at quas repudiandae cumque incidunt error et ab, quasi, odit adipisci dolor quos laboriosam in aspernatur praesentium nulla!</p>
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Temporibus consequatur odit cum suscipit eius magnam neque accusamus dolores quae iure. Nam incidunt libero quasi quam reprehenderit nulla quae corporis autem?</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae similique quisquam sapiente nam fugit corporis ad assumenda ut aut magni, adipisci reprehenderit! Quis maxime nesciunt reprehenderit, fugit ratione distinctio deserunt!</p>
+                            
+                        </div>
+                   </v-col>
+               </v-row>
+           </v-container>
+            
+
+            <v-footer color="light-blue darken-1 white--text">
+              <v-container>
+                <v-row>
+                    <v-col cols="2">
+                        <p>CONTACT US</p>
+                        info@NOMBREAPP.com
+                        <br>
+                        +54 9 11-5043-5985
+                    </v-col>
+  
+                    <v-col cols="2">
+                        <p>CAREERS</p>
+                        Come join us!
+                        <br>
+                        <a href="careers.html">Careers site</a>
+                    </v-col>
+  
+                    <v-col cols="8"></v-col>
+                </v-row>
+              </v-container>
+            </v-footer>
+
+
+          </v-content>
+        </v-app>
+      </div>
+
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+      })
+    </script>
+  </body>
+  </html>
