@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="google-signin-client_id" content="28650626222-sjvupvesv21q38i8u9rl6m969r1fdtf5.apps.googleusercontent.com.apps.googleusercontent.com">
+    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/LogIn.css" rel="stylesheet">
+    <link href="../css/general.css" rel="stylesheet">
+    <title>UltraHome</title>
+</head>
+<body>
+<div id="app">
+    <v-app>
+        <v-content>
+
+            <v-toolbar app short color="light-blue darken-1 white--text">
+                <v-toolbar-title>UltraHome</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn class="white--text" text>HOME</v-btn>
+                <v-btn class="white--text" text>ABOUT US</v-btn>
+                <v-btn class="ma-2" outlined color="white">LOG IN</v-btn>
+                <v-btn class="ma-2" outlined color="white">SIGN UP</v-btn>
+            </v-toolbar>
+
+<!--            <v-container>-->
+<!--                <v-row>-->
+<!--                    <v-col>-->
+<!--                        <v-icon align="start">mdi-email</v-icon>-->
+<!--                    </v-col>-->
+<!--                </v-row>-->
+<!--            </v-container>-->
+            <v-row justify="space-around">
+                <v-col>
+                   <v-icon x-large>mdi-keyboard-backspace</v-icon>
+                </v-col>
+            </v-row>
+
+            <v-container>
+                <v-row>
+                    <v-col align="center">
+                        <p class="display-3">Sign Up*</p>
+                        <p class="title">Already have a Ultra Home account? <u>Log In</u></p>
+                    </v-col>
+                </v-row>
+            </v-container>
+
+            <v-container>
+                <v-row>
+                    <v-col cols="10" sm="5" align="center" >
+                        <v-text-field
+                                v-model="first"
+                                label="First Name"
+                                outlined
+                        ></v-text-field>
+
+                        <v-text-field
+                                v-model="email"
+                                label="Email"
+                                outlined
+                        ></v-text-field>
+                        <v-text-field
+                                v-model="password"
+                                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                :type="show1 ? 'text' : 'password'"
+                                name="input-10-1"
+                                label="Password"
+                                outlined
+                                hint="At least 8 characters"
+                                counter
+                                @click:append="show1 = !show1"
+                        ></v-text-field>
+
+                        <v-text-field
+                                v-model="password"
+                                :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                :type="show1 ? 'text' : 'password'"
+                                name="input-10-1"
+                                label="Confirm Password"
+                                outlined
+                                hint="At least 8 characters"
+                                counter
+                                @click:append="show1 = !show1"
+                        ></v-text-field>
+
+                        <v-btn large color="light-blue darken-1" dark>SIGN UP</v-btn>
+                    </v-col>
+
+                    <v-spacer></v-spacer>
+
+                    <v-col >
+                        <v-divider vertical></v-divider>
+                    </v-col>
+
+                    <v-spacer></v-spacer>
+
+
+                    <div id="my-signin2"></div>
+                    <script>
+                        function onSuccess(googleUser) {
+                            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                        }
+                        function onFailure(error) {
+                            console.log(error);
+                        }
+                        function renderButton() {
+                            gapi.signin2.render('my-signin2', {
+                                'scope': 'profile email',
+                                'width': 240,
+                                'height': 50,
+                                'longtitle': true,
+                                'theme': 'dark',
+                                'onsuccess': onSuccess,
+                                'onfailure': onFailure
+                            });
+                        }
+                    </script>
+                    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+                    <v-spacer></v-spacer>
+                    <v-spacer></v-spacer>
+
+                </v-row>
+            </v-container>
+
+            <v-container>
+                <v-row>
+                    <v-col align="center">
+                        <p>By signing up, you agree to our <u>Terms of Use</u> and to <br> receive Ultra Home emails & updates and <br> acknowledge that you read our <u>Privacy Policy</u></p>
+                    </v-col>
+                </v-row>
+            </v-container>
+
+
+            <!-- VER COMO DEJAR UN ESPACIO SIN HACER ESTO -->
+            <v-row>
+                <v-col></v-col>
+            </v-row>
+            <v-row>
+                <v-col></v-col>
+            </v-row>
+            <v-row>
+                <v-col></v-col>
+            </v-row>
+
+
+            <!-- VER COMO DEJAR UN ESPACIO SIN HACER ESTO -->
+            <v-container></v-container>
+
+
+            <v-footer color="light-blue darken-1 white--text">
+                <v-container>
+                    <v-row>
+                        <v-col cols="2">
+                            <p>CONTACT US</p>
+                            info@NOMBREAPP.com
+                            <br>
+                            +54 9 11-5043-5985
+                        </v-col>
+
+                        <v-col cols="2">
+                            <p>CAREERS</p>
+                            Come join us!
+                            <br>
+                            <a href="careers.html">Careers site</a>
+                        </v-col>
+
+                        <v-col cols="8"></v-col>
+                    </v-row>
+                </v-container>
+            </v-footer>
+
+
+        </v-content>
+    </v-app>
+</div>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        vuetify: new Vuetify(),
+    })
+</script>
+</body>
+
+</html>
