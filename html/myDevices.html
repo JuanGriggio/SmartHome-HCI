@@ -18,7 +18,30 @@
             <v-toolbar app short color="light-blue darken-1 white--text">
                 <v-toolbar-title>UltraHome</v-toolbar-title>
                 <v-spacer></v-spacer>
-                <v-btn class="white--text" text>SETTINGS</v-btn>
+
+                <v-dialog v-model="dialog" scrollable max-width="400px">
+                    <template v-slot:activator="{ on }">
+                      <v-btn class="white--text" v-on="on" text>SETTINGS</v-btn>
+                    </template>
+                    <v-card>
+                        <v-card-title>Settings</v-card-title>
+                        <v-divider></v-divider>
+                        <v-row>
+                            <v-col cols="9">
+                                <p>Setting 1</p>
+                            </v-col>
+                            <v-col cols="3">
+                                
+                            </v-col>
+                        </v-row>
+                        <v-divider></v-divider>
+                        <v-card-actions>
+                            <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+                            <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-dialog>
+
                 <v-btn class="ma-2" outlined color="white">LOG OUT</v-btn>
           </v-toolbar>
 
@@ -48,22 +71,21 @@
                             <!-- EN PROCESO -->
                             <v-container>
                                 <v-row>
-                                    <v-col>
+                                    <v-col cols="6">
                                         <v-card>
                                             <v-container>
                                                 <v-row align="center">
-                                                    <v-col align="center">
-                                                        <v-icon>mdi-home</v-icon>
+                                                    <v-col cols="12" align="center" color="blue lighten-3">
+                                                        <div class="blue lighten-3" outlined>
+                                                            <v-icon size="80" class="pa-3 ma-3">mdi-home</v-icon>
+                                                        </div>
+                                                    </v-col>
+                                                    <v-col cols="12" align="center">
                                                         <p id="npnm">Coming home</p>
                                                     </v-col>
                                                 </v-row>
                                             </v-container>
                                         </v-card>
-                                    </v-col>
-
-
-                                    <v-col>
-                                        <quick-action name="prueba" iconn="mdi-home"></quick-action>
                                     </v-col>
                                 </v-row>
                             </v-container>
@@ -76,10 +98,13 @@
                                 <v-row>
                                         <p id="npnm" class="headline">Buenos Aires home</p>
                                         <v-spacer></v-spacer>
-                                        <v-btn small>Edit</v-btn>
+                                        <v-btn small v-show="expand">Edit</v-btn>
                                         <v-btn small @click="expand = !expand">
                                             <v-icon>mdi-keyboard_arrow_down</v-icon>
                                         </v-btn>
+                                        <v-col cols="12">
+                                            <v-divider></v-divider>
+                                        </v-col>
                                         <v-col cols="12" class="shrink">
                                             <v-expand-transition>
                                                 <v-row v-show="expand">
@@ -201,7 +226,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-    <script src="../components/quickAction.js"></script>
     <script>
       new Vue({
         el: '#app',
