@@ -21,68 +21,74 @@
         </v-toolbar>
 
         <v-container>
-          <v-row>
+          <v-row class="my-5">
             <v-col align="center">
               <p class="display-3">Welcome to UltraHome, Juan!</p>
             </v-col>
           </v-row>
+          <v-row>
+            <v-col align="center">
+              <template>
+                <v-stepper :value=currentStep>
+                  <v-stepper-header>
+                    <v-stepper-step step="1">Step 1: create a new home</v-stepper-step>
+                    <v-divider></v-divider>
+                    <v-stepper-step step="2">Step 2: Create a new room</v-stepper-step>
+                    <v-divider></v-divider>
+                    <v-stepper-step step="3">Step 3: add your first device</v-stepper-step>
+                  </v-stepper-header>
+                </v-stepper>
+              </template>
+            </v-col>
+          </v-row>
         </v-container>
 
-
-        <!-- NOTA: considerar usar la propiedad de loading de las v-card -->
-
-        <v-container>
+        <v-container class="mb-12 pt-0">
           <v-row>
-
             <v-col cols="4" align="center">
-              <p class="title">Step 1: create a new home</p>
-              <!-- este <p> lo añadi solamente para que el boton aparezca separado del v-card -->
-              <p>
-                <v-btn color="light-blue darken-1 white--text">Add home</v-btn>
-              </p>
-              <v-card color="light-blue darken-1">
-                <v-icon large>mdi-check</v-icon>
-                <v-card>
-                  <v-card-title align="center">
-                    <p>Casa de Juan added!</p>
-                  </v-card-title>
-                </v-card>
+              <v-btn class="my-0" color="light-blue darken-1 white--text" @click="enterSecondStep" v-show="!firstStepCompleted">Add home</v-btn>
+              <v-card color="light-blue darken-1" v-show="firstStepCompleted">
+                <v-icon class="my-2" large>mdi-check</v-icon>
+              </v-card>
+              <v-card v-show="firstStepCompleted">
+                <v-card-title align="center">Casa de Juan y Anamaria de la Constancia added!</v-card-title>
               </v-card>
             </v-col>
 
             <v-col cols="4" align="center">
-              <p class="title">Step 2: Create a new room</p>
-              <!-- este <p> lo añadi solamente para que el boton aparezca separado del v-card -->
-              <p>
-                <v-btn color="light-blue darken-1 white--text">Add room</v-btn>
-              </p>
-              <v-card color="light-blue darken-1">
-                <v-icon large>mdi-check</v-icon>
+              <v-btn class="my-0" color="light-blue darken-1 white--text" @click="enterThirdStep" v-show="!secondStepCompleted && firstStepCompleted">Add room</v-btn>
+              <v-card color="light-blue darken-1" v-show="secondStepCompleted">
+                <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
-              <v-card>
-                <v-card-title align="center">
-                  <p>Dormitorio added!</p>
-                </v-card-title>
+              <v-card v-show="secondStepCompleted">
+                <v-card-title align="center">Dormitorio added!</v-card-title>
               </v-card>
             </v-col>
 
             <v-col cols="4" align="center">
-              <p class="title">Step 3: add your first device</p>
-              <!-- este <p> lo añadi solamente para que el boton aparezca separado del v-card -->
-              <p>
-                <v-btn color="light-blue darken-1 white--text">Add device</v-btn>
-              </p>
-              <v-card color="light-blue darken-1">
-                <v-icon large>mdi-check</v-icon>
+              <v-btn class="my-0" color="light-blue darken-1 white--text" @click="stepsCompleted" v-show="!thirdStepCompleted && secondStepCompleted">Add device</v-btn>
+              <v-card color="light-blue darken-1" v-show="thirdStepCompleted">
+                <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
-              <v-card>
-                <v-card-title align="center">
-                  <p>Fridge added!</p>
-                </v-card-title>
+              <v-card v-show="thirdStepCompleted">
+                <v-card-title align="center">Fridge added!</v-card-title>
               </v-card>
+            </v-col>
+          </v-row>
+
+          <!-- only used for making some white space at the bottom before first step is completed -->
+          <v-row class="my-12" v-show="!firstStepCompleted"></v-row>
+
+          <v-row v-show="thirdStepCompleted">
+            <v-col cols="5">
+              All set up! Now you can start controlling your devices.
+            </v-col>
+            <v-col cols="2">
+              <v-btn color="light-blue darken-1 white--text">Go to home</v-btn>
             </v-col>
 
           </v-row>
+
         </v-container>
 
         <v-footer color="light-blue darken-1 white--text">
@@ -118,9 +124,37 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script>
-      new Vue({
+      var app = new Vue({
           el: '#app',
           vuetify: new Vuetify(),
+          data: {
+              firstStepCompleted: false,
+              secondStepCompleted: false,
+              thirdStepCompleted: false,
+              currentStep: 1,
+              firstButtonDisabled: false,
+              secondButtonDisabled: true,
+              thirdButtonDisabled: true
+          },
+          methods: {
+              enterSecondStep: function() {
+                  this.firstStepCompleted = true;
+                  this.currentStep = 2;
+                  this.firstButtonDisabled = true;
+                  this.secondButtonDisabled = false;
+              },
+              enterThirdStep: function() {
+                  this.secondStepCompleted = true;
+                  this.currentStep = 3;
+                  this.secondButtonDisabled = true;
+                  this.thirdButtonDisabled = false;
+              },
+              stepsCompleted: function() {
+                  this.currentStep = 0;
+                  this.thirdStepCompleted = true;
+                  this.thirdButtonDisabled = true;
+              }
+          }
       })
   </script>
 
