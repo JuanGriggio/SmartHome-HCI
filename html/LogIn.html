@@ -21,26 +21,38 @@
                 <v-btn class="white--text" text>ABOUT US</v-btn>
                 <v-btn class="ma-2" outlined color="white">LOG IN</v-btn>
                 <v-btn class="ma-2" outlined color="white">SIGN UP</v-btn>
-            </v-toolbar>
+            </v-toolbar>       
 
-            <v-row justify="space-around">
-                <v-col>
-                    <v-icon x-large>mdi-keyboard-backspace</v-icon>
-                </v-col>
-            </v-row>
-
-            <v-container>
+            <v-container fluid class="pt-12 pb-0">
                 <v-row>
-                    <v-col align="center">
+                    <v-col cols="1">
+                        <v-btn>
+                            <v-icon x-large>mdi-keyboard-backspace</v-icon>
+                        </v-btn>
+                    </v-col>
+                    <v-col cols="10" align="center">
                         <p class="display-3">Log In*</p>
                         <p class="title">New to Ultra Home? <u>Sign Up</u></p>
                     </v-col>
+                    <v-col cols="1"></v-col>
                 </v-row>
             </v-container>
 
             <v-container>
                 <v-row>
-                    <v-col cols="10" sm="5" align="center">
+                    <v-spacer></v-spacer>
+                    <v-col cols="7" align="center">
+                        <v-divider></v-divider>
+                    </v-col>
+                    <v-spacer></v-spacer>
+                </v-row>
+            </v-container>
+
+            <v-container>
+                <v-row>
+                    <v-col cols="3"></v-col>
+
+                    <v-col cols="6" align="center">
                         <v-text-field
                                 v-model="email"
                                 label="Email"
@@ -52,60 +64,25 @@
                                 label="Password"
                                 outlined
                                 clearable
-
                         ></v-text-field>
 
-
-                        <p align="end"><u>Forgot password?</u></p>
-
-                        <v-checkbox v-model="remember" label="Remember me" hide-details></v-checkbox>
-
+                        <v-row>
+                            <v-col cols="5">
+                                <v-checkbox class="npnm" v-model="remember" label="Remember me" hide-details></v-checkbox>
+                            </v-col>
+                            <v-spacer></v-spacer>
+                            <v-col align="end" cols="5">
+                                <p class="npnm">Forgot password?</p>         
+                            </v-col>
+                        </v-row>
 
                         <v-btn large color="light-blue darken-1" dark>LOG IN</v-btn>
 
                     </v-col>
 
-                    <v-spacer></v-spacer>
-
-                    <v-col >
-                        <v-divider vertical></v-divider>
-                    </v-col>
-
-                    <v-spacer></v-spacer>
-
-                    <v-col>
-
-                        <div id="my-signin2" padding="34px"></div>
-
-                        <script>
-                            function onSuccess(googleUser) {
-                                console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                            }
-                            function onFailure(error) {
-                                console.log(error);
-                            }
-                            function renderButton() {
-                                gapi.signin2.render('my-signin2', {
-                                    'scope': 'profile email',
-                                    'width': 240,
-                                    'height': 50,
-                                    'longtitle': true,
-                                    'theme': 'dark',
-                                    'onsuccess': onSuccess,
-                                    'onfailure': onFailure
-                                });
-                            }
-                        </script>
-
-                        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
-
-                    </v-col>
-
-                    <v-spacer></v-spacer>
-                    <v-spacer></v-spacer>
-
+                    <v-col cols="3"></v-col>
                 </v-row>
+        
             </v-container>
 
             <v-container>
@@ -115,23 +92,6 @@
                     </v-col>
                 </v-row>
             </v-container>
-
-
-            <!-- VER COMO DEJAR UN ESPACIO SIN HACER ESTO -->
-            <v-row>
-                <v-col></v-col>
-            </v-row>
-            <v-row>
-                <v-col></v-col>
-            </v-row>
-            <v-row>
-                <v-col></v-col>
-            </v-row>
-
-
-            <!-- VER COMO DEJAR UN ESPACIO SIN HACER ESTO -->
-            <v-container></v-container>
-
 
             <v-footer color="light-blue darken-1 white--text">
                 <v-container>
