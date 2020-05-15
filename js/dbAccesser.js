@@ -1,71 +1,15 @@
-var api = class {
-    static get baseUrl() {
-      return 'http://127.0.0.1:8080/api';
-    }
-  
-    static get timeout() {
-      return 60 * 1000;
-    }
-  
-    static fetch(url, init) {
-      return new Promise((resolve, reject) => {
-        let controller = new AbortController();
-        let signal = controller.signal;
-  
-        setTimeout(() => controller.abort(), api.timeout);
-  
-        init.signal = signal
-  
-        fetch(url, init)
-        .then(response => {
-          if (!response.ok)
-            reject(new Error(response.statusText));
-  
-          return response.json();
-        })
+function createHome(name) {
+    /* este "this.home" apunta a la variable "home" definida en el welcomeTutorial.js (no se si esto esta correcto)*/
+    /* estamos llenando la variable con el constructor del modelo de Home */
+    this.home = new api.model.home(null, /* `kitchen ${index}` */ name, { 'size': '9m2' });
+    // llamamos al metodo static "add"
+    api.home.add(this.home)
         .then(data => {
-          resolve(data);
+            this.home.id = data.result.id;
         })
         .catch(error => {
-          reject(error);
+            console.log(error + ": La Home ya existe");
         });
-      });
-    }
-  
-    static get(url) {
-      return api.fetch(url, {})
-    }
-  
-    static post(url, data) {
-      return api.fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(data)
-      });
-    }
-  
-    static put(url, data) {
-      return api.fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(data)
-      });
-    }
-  
-    static delete(url) {
-      return api.fetch(url, {
-        method: 'DELETE',
-      });
-    }
-  }
-
-
-function createHome(name) {
-    
 }
 
 function createRoom(name, homeId) {
