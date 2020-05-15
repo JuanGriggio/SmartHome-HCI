@@ -16,8 +16,31 @@
         <v-toolbar app short color="light-blue darken-1 white--text">
           <v-toolbar-title>UltraHome</v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-btn class="white--text" text>SETTINGS</v-btn>
-          <v-btn class="ma-2, blue--text">LOG OUT</v-btn>
+
+          <v-dialog v-model="dialog" scrollable max-width="400px">
+              <template v-slot:activator="{ on }">
+                <v-btn class="white--text" v-on="on" text>SETTINGS</v-btn>
+              </template>
+              <v-card>
+                  <v-card-title>Settings</v-card-title>
+                  <v-divider></v-divider>
+                  <v-row>
+                      <v-col cols="9">
+                          <p>Setting 1</p>
+                      </v-col>
+                      <v-col cols="3">
+                          
+                      </v-col>
+                  </v-row>
+                  <v-divider></v-divider>
+                  <v-card-actions>
+                      <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+                      <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+                  </v-card-actions>
+              </v-card>
+          </v-dialog>
+
+          <v-btn class="ma-2" outlined color="white">LOG OUT</v-btn>
         </v-toolbar>
 
         <v-container>
@@ -46,32 +69,67 @@
         <v-container class="mb-12 pt-0">
           <v-row>
             <v-col cols="4" align="center">
-              <v-btn class="my-0" color="light-blue darken-1 white--text" @click="enterSecondStep" v-show="!firstStepCompleted">Add home</v-btn>
+              <v-text-field
+                v-show="currentStep === 1"
+                v-model="homeName"
+                label="Name of the new home"
+                :rules="[rules.required, rules.counter]"
+                counter
+                maxlength="30"
+              ></v-text-field>
+              <v-btn class="my-0" v-bind:disabled="homeName === ''" color="light-blue darken-1 white--text" @click="enterSecondStep" v-show="currentStep === 1">Add home</v-btn>
+
               <v-card color="light-blue darken-1" v-show="firstStepCompleted">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
-              <v-card v-show="firstStepCompleted">
-                <v-card-title align="center">Casa de Juan y Anamaria de la Constancia added!</v-card-title>
+              <v-card v-show="firstStepCompleted" align="center">
+                <v-card-title class="justify-center">{{homeName}} added!</v-card-title>
               </v-card>
             </v-col>
 
             <v-col cols="4" align="center">
-              <v-btn class="my-0" color="light-blue darken-1 white--text" @click="enterThirdStep" v-show="!secondStepCompleted && firstStepCompleted">Add room</v-btn>
+              <v-text-field
+                v-show="currentStep === 2"
+                v-model="roomName"
+                label="Name of the new room"
+                :rules="[rules.required, rules.counter]"
+                counter
+                maxlength="30"
+              ></v-text-field>
+              <v-btn class="my-0" v-bind:disabled="roomName === ''" color="light-blue darken-1 white--text" @click="enterThirdStep" v-show="currentStep === 2">Add room</v-btn>
               <v-card color="light-blue darken-1" v-show="secondStepCompleted">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
               <v-card v-show="secondStepCompleted">
-                <v-card-title align="center">Dormitorio added!</v-card-title>
+                <v-card-title class="justify-center">{{roomName}} added!</v-card-title>
               </v-card>
             </v-col>
 
             <v-col cols="4" align="center">
-              <v-btn class="my-0" color="light-blue darken-1 white--text" @click="stepsCompleted" v-show="!thirdStepCompleted && secondStepCompleted">Add device</v-btn>
+
+                <v-select
+                v-show="currentStep === 3"
+                :items="items"
+                label="Devices found ready to connect"
+                dense
+                v-on:change="selectedDevice"
+              ></v-select>
+              
+              <v-text-field
+                v-show="currentStep === 3"
+                v-model="deviceName"
+                label="Device name"
+                :rules="[rules.required, rules.counter]"
+                counter
+                maxlength="30"
+              ></v-text-field>
+
+              <v-btn class="my-0" v-bind:disabled="deviceName === ''" color="light-blue darken-1 white--text" @click="stepsCompleted" v-show="currentStep === 3">Add device</v-btn>
               <v-card color="light-blue darken-1" v-show="thirdStepCompleted">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
               <v-card v-show="thirdStepCompleted">
-                <v-card-title align="center">Fridge added!</v-card-title>
+                <v-card-title class="justify-center">{{deviceName}} added!</v-card-title>
               </v-card>
             </v-col>
           </v-row>
@@ -123,40 +181,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-  <script>
-      var app = new Vue({
-          el: '#app',
-          vuetify: new Vuetify(),
-          data: {
-              firstStepCompleted: false,
-              secondStepCompleted: false,
-              thirdStepCompleted: false,
-              currentStep: 1,
-              firstButtonDisabled: false,
-              secondButtonDisabled: true,
-              thirdButtonDisabled: true
-          },
-          methods: {
-              enterSecondStep: function() {
-                  this.firstStepCompleted = true;
-                  this.currentStep = 2;
-                  this.firstButtonDisabled = true;
-                  this.secondButtonDisabled = false;
-              },
-              enterThirdStep: function() {
-                  this.secondStepCompleted = true;
-                  this.currentStep = 3;
-                  this.secondButtonDisabled = true;
-                  this.thirdButtonDisabled = false;
-              },
-              stepsCompleted: function() {
-                  this.currentStep = 0;
-                  this.thirdStepCompleted = true;
-                  this.thirdButtonDisabled = true;
-              }
-          }
-      })
-  </script>
+  <script src="../js/newUserWelcomeTutorial.js"></script>
 
 </body>
 </html>
