@@ -77,12 +77,12 @@
                 counter
                 maxlength="30"
               ></v-text-field>
-              <v-btn class="my-0" v-bind:disabled="homeName === ''" color="light-blue darken-1 white--text" @click="enterSecondStep" v-show="currentStep === 1">Add home</v-btn>
+              <v-btn class="my-0" v-bind:disabled="homeName === ''" color="light-blue darken-1 white--text" @click="currentStep++" v-show="currentStep === 1">Add home</v-btn>
 
-              <v-card color="light-blue darken-1" v-show="firstStepCompleted">
+              <v-card color="light-blue darken-1" v-show="currentStep !== 1">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
-              <v-card v-show="firstStepCompleted" align="center">
+              <v-card v-show="currentStep !== 1" align="center">
                 <v-card-title class="justify-center">{{homeName}} added!</v-card-title>
               </v-card>
             </v-col>
@@ -96,17 +96,19 @@
                 counter
                 maxlength="30"
               ></v-text-field>
-              <v-btn class="my-0" v-bind:disabled="roomName === ''" color="light-blue darken-1 white--text" @click="enterThirdStep" v-show="currentStep === 2">Add room</v-btn>
-              <v-card color="light-blue darken-1" v-show="secondStepCompleted">
+              <v-row>
+                <v-btn class="my-0" color="light-blue darken-1 white--text" v-show="currentStep === 2" @click="currentStep--">Go back</v-btn>
+                <v-btn class="my-0" v-bind:disabled="roomName === ''" color="light-blue darken-1 white--text" @click="currentStep++" v-show="currentStep === 2">Add room</v-btn>
+              </v-row>
+              <v-card color="light-blue darken-1" v-show="currentStep === 3 || currentStep === 4">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
-              <v-card v-show="secondStepCompleted">
+              <v-card v-show="currentStep === 3 || currentStep === 4">
                 <v-card-title class="justify-center">{{roomName}} added!</v-card-title>
               </v-card>
             </v-col>
 
             <v-col cols="4" align="center">
-
                 <v-select
                 v-show="currentStep === 3"
                 :items="items"
@@ -123,21 +125,24 @@
                 counter
                 maxlength="30"
               ></v-text-field>
-
-              <v-btn class="my-0" v-bind:disabled="deviceName === ''" color="light-blue darken-1 white--text" @click="stepsCompleted" v-show="currentStep === 3">Add device</v-btn>
-              <v-card color="light-blue darken-1" v-show="thirdStepCompleted">
+              <v-row>
+                <v-btn class="my-0" color="light-blue darken-1 white--text" @click="currentStep--" v-show="currentStep === 3">Go back</v-btn>
+                <v-btn class="my-0" v-bind:disabled="deviceName === ''" color="light-blue darken-1 white--text" @click="currentStep++" v-show="currentStep === 3">Add device</v-btn>
+              </v-row>
+              <v-card color="light-blue darken-1" v-show="currentStep === 4">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
-              <v-card v-show="thirdStepCompleted">
+              <v-card v-show="currentStep === 4">
                 <v-card-title class="justify-center">{{deviceName}} added!</v-card-title>
               </v-card>
             </v-col>
           </v-row>
 
           <!-- only used for making some white space at the bottom before first step is completed -->
-          <v-row class="my-12" v-show="!firstStepCompleted"></v-row>
+          <!-- todo: NO SE CUANDO PONERLO -->
+          <v-row class="my-12" v-show="true"></v-row>
 
-          <v-row v-show="thirdStepCompleted">
+          <v-row v-show="currentStep === 4">
             <v-col cols="5">
               All set up! Now you can start controlling your devices.
             </v-col>
