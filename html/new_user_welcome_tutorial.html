@@ -4,6 +4,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
   <meta charset="UTF-8">
   <link href="../css/index.css" rel="stylesheet">
   <title>new_user_welcome_tutorial</title>
@@ -76,7 +77,7 @@
                 label="Name of the new home"
                 :rules="[rules.required, rules.counter]"
                 counter
-                maxlength="30"
+                maxlength="25"
               ></v-text-field>
               <v-btn class="my-0" v-bind:disabled="homeName === ''" color="light-blue darken-1 white--text" @click="currentStep++" v-show="currentStep === 1">Add home</v-btn>
 
@@ -95,12 +96,10 @@
                 label="Name of the new room"
                 :rules="[rules.required, rules.counter]"
                 counter
-                maxlength="30"
+                maxlength="25"
               ></v-text-field>
-              <v-row>
-                <v-btn class="my-0" color="light-blue darken-1 white--text" v-show="currentStep === 2" @click="currentStep--">Go back</v-btn>
+                <v-btn class="my-0" outlined color="light-blue darken-1" v-show="currentStep === 2" @click="currentStep--">Go back</v-btn>
                 <v-btn class="my-0" v-bind:disabled="roomName === ''" color="light-blue darken-1 white--text" @click="currentStep++" v-show="currentStep === 2">Add room</v-btn>
-              </v-row>
               <v-card color="light-blue darken-1" v-show="currentStep === 3 || currentStep === 4">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
@@ -126,10 +125,8 @@
                 counter
                 maxlength="30"
               ></v-text-field>
-              <v-row>
-                <v-btn class="my-0" color="light-blue darken-1 white--text" @click="currentStep--" v-show="currentStep === 3">Go back</v-btn>
+                <v-btn class="my-0" outlined color="light-blue darken-1" @click="currentStep--" v-show="currentStep === 3">Go back</v-btn>
                 <v-btn class="my-0" v-bind:disabled="deviceName === ''" color="light-blue darken-1 white--text" @click="finishSteps" v-show="currentStep === 3">Add device</v-btn>
-              </v-row>
               <v-card color="light-blue darken-1" v-show="currentStep === 4">
                 <v-icon class="my-2" large>mdi-check</v-icon>
               </v-card>
@@ -144,16 +141,16 @@
           <v-row class="my-12" v-show="true"></v-row>
 
           <!-- only shown when all 3 steps have been completed -->
-          <v-row v-show="currentStep === 4">
-            <v-col cols="5">
+          <v-row align="center" v-show="currentStep === 4">      
+            <v-col align="center" cols="12">
               All set up! Now you can start controlling your devices.
             </v-col>
-            <v-col cols="2">
-              <v-btn color="light-blue darken-1 white--text">Go to home</v-btn>
+            <v-col align="center" cols="12">
+              <v-btn color="light-blue darken-1 white--text">
+                Start
+              </v-btn>
             </v-col>
-
           </v-row>
-
         </v-container>
 
         <v-footer color="light-blue darken-1 white--text">
@@ -181,7 +178,6 @@
             </v-row>
           </v-container>
         </v-footer>
-
       </v-content>
     </v-app>
   </div>

@@ -7,7 +7,7 @@ var app = new Vue({
         dialog: false,
         rules: {
           required: value => !!value || 'Required.',
-          counter: value => value.length <= 30 || 'Max 30 characters'
+          counter: value => value.length <= 25 || 'Max 25 characters'
         },
         home: {},   // la home que se va a usar de Modelo por la api (primero crea una Home, y despues la manda al servidor)
         room: {},   // idem
