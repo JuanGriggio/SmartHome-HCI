@@ -1,4 +1,4 @@
-function createHome(name/*, home*/) {
+function createHome(name) {
 
     /* este "this.home" apunta a la variable "home" definida en el welcomeTutorial.js (no se si esto esta correcto)*/
     /* estamos llenando la variable con el constructor del modelo de Home */
@@ -9,10 +9,14 @@ function createHome(name/*, home*/) {
     api.home.add(this.home)
         .then(data => {
             this.home.id = data.result.id;
+            // SOY JUAN. MI IDEA ERA QUE ACA ESTA FUNCION RETORNE this.home.id PARA QUE DESDE newUserWelcomeTutorial.js
+            // SE PUEDA RESCATAR EL id Y SE LO PUEDA MANDAR A createRoom, PERO POR ALGUNA RAZON RETORNA undefined
         })
         .catch(error => {
             console.log(error + ": La Home ya existe");
         });
+
+    
 }
 
 function createRoom(name, homeId) {
@@ -26,6 +30,7 @@ function createRoom(name, homeId) {
         .catch(error => {
             console.log(error + ": La Room ya existe");
         });
+
 
     // segunda parte. No funciona porque this.room.id y homeId son undefined, hay que ver de donde sacarlos!
     api.homeRoom.addRoomToHome(this.room.id, homeId);

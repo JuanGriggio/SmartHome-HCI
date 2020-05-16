@@ -22,8 +22,8 @@ var app = new Vue({
             /* aumentamos al paso 4, para mostrar que los 3 pasos ya estan completados */
             this.currentStep ++;
             /* llamo al metodo definido en dbAccesser.js */
-            createHome(this.homeName);
-            createRoom(this.roomName, this.home.id);
+            let homeId = createHome(this.homeName);
+            createRoom(this.roomName, homeId);
             // createDevice(this.deviceName);
         },
         selectedDevice(selectObj) {
