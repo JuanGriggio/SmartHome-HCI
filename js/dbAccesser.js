@@ -91,3 +91,15 @@ function executeDeviceAction(deviceId, actionName) {
 function executeRoutine(deviceId, actionName) {
 
 }
+
+function getAllHomes() {    // must return an array with all home ids
+
+}
+
+function getAllRoomsAndTheirHomes() {   // must return an object (hash) in which every key is the id of the home that it belongs to
+
+}
+
+function getAllDevicesAndTheirRooms() { // must return an object (hash) in which every key is the id of the room that it belongs to
+
+}
