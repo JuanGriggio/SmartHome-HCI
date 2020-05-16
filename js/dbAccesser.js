@@ -1,7 +1,9 @@
-function createHome(name) {
+function createHome(name/*, home*/) {
+
     /* este "this.home" apunta a la variable "home" definida en el welcomeTutorial.js (no se si esto esta correcto)*/
     /* estamos llenando la variable con el constructor del modelo de Home */
-    this.home = new api.model.home(null, /* `kitchen ${index}` */ name, { 'size': '9m2' });
+    this.home = new api.model.home(null, name, { 'datoExtraHome': 'probando' });
+
     // llamamos al metodo static "add"
     api.home.add(this.home)
         .then(data => {
@@ -13,8 +15,28 @@ function createHome(name) {
 }
 
 function createRoom(name, homeId) {
-    
+
+    this.room = new api.model.room(null, name, { 'datoExtraRoom': 'probando'});
+
+    // esto que viene aca me creashea
+    api.room.add(this.room)
+        .then(data => {
+            this.room.id = data.result.id;
+        })
+        .catch(error => {
+            console.log(error + ": La Room ya existe");
+        });
+
+    // segunda parte
+    api.homeRoom.addRoomToHome(this.room.id, homeId);
 }
+
+
+
+
+
+
+
 
 function createDevice(name, typeId, roomId) {
     

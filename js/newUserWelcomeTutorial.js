@@ -10,17 +10,21 @@ var app = new Vue({
           counter: value => value.length <= 30 || 'Max 30 characters'
         },
         home: {},   // la home que se va a usar de Modelo por la api (primero crea una Home, y despues la manda al servidor)
+        room: {},   // idem
+        device: {}, // idem
         homeName: "",
         roomName: "",
         deviceName: "",
         deviceSelected: "",
     },
     methods: {
-        registerHome: function() {
-            /* esta es la parte que teniamos antes */
+        finishSteps: function() {
+            /* aumentamos al paso 4, para mostrar que los 3 pasos ya estan completados */
             this.currentStep ++;
             /* llamo al metodo definido en dbAccesser.js */
-            createHome("Casa de Juancito");  // HARDCODEADO
+            createHome(this.homeName);
+            createRoom(this.roomName, this.home.id);
+            // createDevice(this.deviceName);
         },
         selectedDevice(selectObj) {
           deviceSelected = selectObj;

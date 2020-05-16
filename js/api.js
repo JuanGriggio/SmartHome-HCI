@@ -41,6 +41,7 @@ var api = class {
         return api.fetch(url, {})
     }
 
+    /* creo que "data" en los "POST" va a ser siempre los nombres de las cosas (tipo "casa de juan") */
     static post(url, data) {
         return api.fetch(url, {
             method: 'POST',
@@ -92,5 +93,43 @@ api.home = class {
 
     static getAll() {
         return api.get(api.home.url);
+    }
+}
+
+// a la clase general le añado una propiedad "room" que es una clase
+api.room = class {
+    static get url() {
+        return `${api.baseUrl}/rooms`;
+    }
+
+    static add(room) {
+        return api.post(api.room.url, room);
+    }
+
+    static modify(room) {
+        return api.put(`${api.room.url}/${room.id}`, room);
+    }
+
+    static delete(id) {
+        return api.delete(`${api.room.url}/${id}`);
+    }
+
+    static get(id) {
+        return api.get(`${api.room.url}/${id}`);
+    }
+
+    static getAll() {
+        return api.get(api.room.url);
+    }
+}
+
+api.homeRoom = class {
+    static get url() {
+        return `${api.baseUrl}/homes`;
+    }
+
+    static addRoomToHome(roomId, homeId) {
+        // tercer parametro = null ya que si miran Swagger, se ve que el body del request de POST debe ser vacio
+        return api.post(`${api.homeRoom.url}/${homeId}/rooms/${roomId}`, null);
     }
 }

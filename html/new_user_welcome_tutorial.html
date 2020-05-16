@@ -71,13 +71,14 @@
             <v-col cols="4" align="center">
               <v-text-field
                 v-show="currentStep === 1"
+                id="newHomeName"
                 v-model="homeName"
                 label="Name of the new home"
                 :rules="[rules.required, rules.counter]"
                 counter
                 maxlength="30"
               ></v-text-field>
-              <v-btn class="my-0" v-bind:disabled="homeName === ''" color="light-blue darken-1 white--text" @click="registerHome" v-show="currentStep === 1">Add home</v-btn>
+              <v-btn class="my-0" v-bind:disabled="homeName === ''" color="light-blue darken-1 white--text" @click="currentStep++" v-show="currentStep === 1">Add home</v-btn>
 
               <v-card color="light-blue darken-1" v-show="currentStep !== 1">
                 <v-icon class="my-2" large>mdi-check</v-icon>
@@ -127,7 +128,7 @@
               ></v-text-field>
               <v-row>
                 <v-btn class="my-0" color="light-blue darken-1 white--text" @click="currentStep--" v-show="currentStep === 3">Go back</v-btn>
-                <v-btn class="my-0" v-bind:disabled="deviceName === ''" color="light-blue darken-1 white--text" @click="currentStep++" v-show="currentStep === 3">Add device</v-btn>
+                <v-btn class="my-0" v-bind:disabled="deviceName === ''" color="light-blue darken-1 white--text" @click="finishSteps" v-show="currentStep === 3">Add device</v-btn>
               </v-row>
               <v-card color="light-blue darken-1" v-show="currentStep === 4">
                 <v-icon class="my-2" large>mdi-check</v-icon>
@@ -187,9 +188,10 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-  <!-- HAY QUE INCLUIR ESTOS 3 EN ESTE MISMO ORDEN -->
+  <!-- NO ENTIENDO MUY BIEN, PERO HAY COSAS QUE DEBEN INCLUIRSE ANTES QUE OTRAS -->
   <script src="../js/api.js"></script>
   <script src="../js/home.js"></script>
+  <script src="../js/room.js"></script>
   <script src="../js/dbAccesser.js"></script>
   <script src="../js/newUserWelcomeTutorial.js"></script>
 
