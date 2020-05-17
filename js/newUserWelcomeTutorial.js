@@ -19,10 +19,12 @@ var app = new Vue({
     },
     methods: {
         finishSteps: function() {
+          // console.log(getAllHomes());
             /* aumentamos al paso 4, para mostrar que los 3 pasos ya estan completados */
             this.currentStep ++;
             /* llamo al metodo definido en dbAccesser.js */
             let homeId = createHome(this.homeName);
+            console.log(homeId);
             createRoom(this.roomName, homeId);
             // createDevice(this.deviceName);
         },

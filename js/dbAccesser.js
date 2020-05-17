@@ -9,8 +9,7 @@ function createHome(name) {
     api.home.add(this.home)
         .then(data => {
             this.home.id = data.result.id;
-            // SOY JUAN. MI IDEA ERA QUE ACA ESTA FUNCION RETORNE this.home.id PARA QUE DESDE newUserWelcomeTutorial.js
-            // SE PUEDA RESCATAR EL id Y SE LO PUEDA MANDAR A createRoom, PERO POR ALGUNA RAZON RETORNA undefined
+            return JSON.stringify(data.result.id, null, 0);
         })
         .catch(error => {
             console.log(error + ": La Home ya existe");
@@ -31,9 +30,8 @@ function createRoom(name, homeId) {
             console.log(error + ": La Room ya existe");
         });
 
-
     // segunda parte. No funciona porque this.room.id y homeId son undefined, hay que ver de donde sacarlos!
-    api.homeRoom.addRoomToHome(this.room.id, homeId);
+    api.homeRoom.addRoomToHome(this.room.id,null,0, homeId);
 }
 
 function createDevice(name, typeId, roomId) {
@@ -93,7 +91,18 @@ function executeRoutine(deviceId, actionName) {
 }
 
 function getAllHomes() {    // must return an array with all home ids
+    // DE TODAS FORMAS NO FUNCIONA ESTO
+    let aux;
+    
+    api.room.getAll()
+      .then(data => {
+        this.aux = data.result;
+      })
+      .catch(error => {
+        //   VER QUE HACER ACA
+      });
 
+    return aux;
 }
 
 function getAllRoomsAndTheirHomes() {   // must return an object (hash) in which every key is the id of the home that it belongs to
