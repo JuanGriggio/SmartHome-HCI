@@ -1,23 +1,32 @@
 function createHome(name) {
 
-    /* este "this.home" apunta a la variable "home" definida en el welcomeTutorial.js (no se si esto esta correcto)*/
-    /* estamos llenando la variable con el constructor del modelo de Home */
-    //ESTO NO ANDA SI NO PONGO NADA EN EL META
-    this.home = new api.model.home(null, name, { 'datoExtraHome': 'probando' });
+    /* PREGUNTA 1: al terminar esta funcion, ¿no se pierde la referencia a esta variable? */
+    /* haciendo la prueba, parece que no... */
+    var home = new api.model.home(null, name, { 'datoExtraHome': 'probando' });
 
-    // llamamos al metodo static "add"
-    api.home.add(this.home)
+    api.home.add(home)
         .then(data => {
-            this.home.id = data.result.id;
-            return JSON.stringify(data.result.id, null, 0);
+            home.id = data.result.id;
+            console.log("hola");
+            console.log(JSON.stringify(home, null, 2));
+            /* PREGUNTA 2: ¿ESTE RETURN A QUIEN RETORNA? */
+            return JSON.stringify(home.id, null, 2);
         })
         .catch(error => {
             console.log(error + ": La Home ya existe");
         });
 
-    
+    // ESTE EL EL VERDADERO RETURN DE LA FUNCION
+    return home;
 }
 
+
+
+
+
+
+
+// NO TE LA TOQUE JUAN ESTA FUNCION, solo la de createHome
 function createRoom(name, homeId) {
     //ESTO NO ANDA SI NO PONGO NADA EN EL META
     this.room = new api.model.room(null, name, { 'datoExtraRoom': 'probando'});

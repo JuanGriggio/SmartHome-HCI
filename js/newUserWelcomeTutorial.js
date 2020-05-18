@@ -9,9 +9,6 @@ var app = new Vue({
           required: value => !!value || 'Required.',
           counter: value => value.length <= 25 || 'Max 25 characters'
         },
-        home: {},   // la home que se va a usar de Modelo por la api (primero crea una Home, y despues la manda al servidor)
-        room: {},   // idem
-        device: {}, // idem
         homeName: "",
         roomName: "",
         deviceName: "",
@@ -19,15 +16,14 @@ var app = new Vue({
     },
     methods: {
         finishSteps: function() {
-          // console.log(getAllHomes());
+
             /* aumentamos al paso 4, para mostrar que los 3 pasos ya estan completados */
             this.currentStep ++;
-            /* llamo al metodo definido en dbAccesser.js */
-            let homeId = createHome(this.homeName);
-            console.log(homeId);
-            createRoom(this.roomName, homeId);
-            // createDevice(this.deviceName);
-        },
+
+            var home = createHome(this.homeName);
+            console.log("createHome me devolvio " + JSON.stringify(home, null, 2));
+
+            },
         selectedDevice(selectObj) {
           deviceSelected = selectObj;
         }

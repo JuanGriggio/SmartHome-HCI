@@ -41,7 +41,7 @@ var api = class {
         return api.fetch(url, {})
     }
 
-    /* creo que "data" en los "POST" va a ser siempre los nombres de las cosas (tipo "casa de juan") */
+    /* "data" son objetos */
     static post(url, data) {
         return api.fetch(url, {
             method: 'POST',
